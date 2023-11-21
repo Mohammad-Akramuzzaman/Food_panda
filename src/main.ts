@@ -14,8 +14,8 @@ async function bootstrap() {
   // await app.listen(3001,()=>{
   //   console.log('Your server is running on http://localhost:3001')
   // });
-  await app.listen(process.env.PORT, '0.0.0.0', () => {
-    console.log(`Your server is running on http://${hostname()}:${process.env.PORT}`);
+  await app.listen(3001, '0.0.0.0', () => {
+    // console.log(`Your server is running on http://${hostname()}:${process.env.PORT}`);
   });
 }
 bootstrap();
