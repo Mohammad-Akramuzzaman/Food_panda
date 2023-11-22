@@ -39,12 +39,12 @@
 // order.service.ts
 // order.service.ts
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm'; // Import this decorator
 
 import { Order } from './order.entity';
 
-@Injectable()
+@Injectable() 
 export class OrderService {
   constructor(
     @InjectRepository(Order)
@@ -54,5 +54,22 @@ export class OrderService {
   async create(orderData: Order): Promise<void> {
     // Assuming you have a method in your repository to save the order
     await this.orderRepository.save(orderData);
+  }
+  findOne(order_id: number) {
+    if (!order_id) {
+      return null;
+    }
+    return this.orderRepository.findOneBy({ order_id });
+  }
+  find(order_id: number) {
+    return this.orderRepository.findBy({ order_id });
+  }
+
+  async remove(order_id: number) {
+    const requiredItems = await this.findOne(order_id);
+    if (!requiredItems) {
+      // throw new NotFoundException('meeting not found');
+    }
+    return this.orderRepository.remove(requiredItems);
   }
 }

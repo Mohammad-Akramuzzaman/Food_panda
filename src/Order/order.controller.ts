@@ -32,10 +32,10 @@
 // }
 
 // profile.controller.ts
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { OrderService } from './order.service';
 
-@Controller('order')
+@Controller()
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
@@ -43,5 +43,15 @@ export class OrderController {
   create(@Body() body: any) {
     this.orderService.create(body);
     return "order created";
+  }
+  @Get('/find')
+  findItem(@Param('order_id')order_id: number) {
+    return this.orderService.find(order_id); 
+  }
+
+
+  @Get(':order_id')
+  findOne(@Param('order_id') order_id: string) {
+    return this.orderService.findOne(Number(order_id));
   }
 }

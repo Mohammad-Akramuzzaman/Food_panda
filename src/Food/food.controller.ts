@@ -21,7 +21,7 @@ export class FoodController {
     food_name: string;
     food_details: string;
     food_category: string;
-    food_price: string;
+    food_price: string; 
     food_addon_category: string;
     // food_image?: string;
     cooking_time: string;
