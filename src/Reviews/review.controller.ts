@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, Get,} from '@nestjs/common';
+import { Body, Controller, Param, Post, Get, Delete,} from '@nestjs/common';
 import { ReviewDto } from './review.dto';
 import { ReviewService } from './review.service';
   
@@ -16,9 +16,9 @@ import { ReviewService } from './review.service';
       );
       return "review sent"
     }
-  @Post('/:id')
+  @Delete('/:id')
   addMeeting(@Param('id') id: string) {
-    return this.reviewService.findOne(parseInt(id));
+    return this.reviewService.remove(parseInt(id));
   }
   @Get('/find')
   findMeeting(@Param('id')id: number) {

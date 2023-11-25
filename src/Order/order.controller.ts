@@ -32,10 +32,10 @@
 // }
 
 // profile.controller.ts
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Res, Delete, Patch } from '@nestjs/common';
 import { OrderService } from './order.service';
-
-@Controller()
+ 
+@Controller('orders')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
@@ -50,8 +50,18 @@ export class OrderController {
   }
 
 
-  @Get(':order_id')
+  @Get('/:order_id')
   findOne(@Param('order_id') order_id: string) {
     return this.orderService.findOne(Number(order_id));
   }
+
+@Delete('/:order_id')
+  removeMeeting(@Param('order_id')  order_id: string) {
+    return this.orderService.remove(parseInt( order_id));
+  }
+
+  @Patch('/:id')
+  updateMeeting(@Param('id') id: string, @Body() body: any) {
+    return this.orderService.update(parseInt(id), body);
+  } 
 }

@@ -6,9 +6,8 @@ import { IssueService } from './issue.service';
 
   @Controller('issues')
   export class IssueController {
-    constructor(
-      private issueService: IssueService,
-    ) {} 
+    constructor(private issueService: IssueService) {}
+
     @Post('/issue')
     createReview(@Body() body: IssueDto) {
       this.issueService.create(
@@ -16,12 +15,12 @@ import { IssueService } from './issue.service';
       );
       return "issue sent"
     }
-  @Post('/:id')
-  addMeeting(@Param('id') id: string) {
-    return this.issueService.findOne(parseInt(id));
-  }
-  @Get('/find')
+  // @Post('/:id')
+  // addMeeting(@Param('id') id: string) {
+  //   return this.issueService.findOne(parseInt(id));
+  // }
+  @Get('/:id')
   findMeeting(@Param('id')id: string) {
-    return this.issueService.find(id);
+    return this.issueService.find(parseInt(id));
   }
 }

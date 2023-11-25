@@ -35,11 +35,11 @@ export class ReviewService {
   //   return this.repo.save(reviews);
   // }
 
-//   async remove(id: number) {
-//     const reviews = await this.findOne(id);
-//     if (!reviews) {
-//       throw new NotFoundException('meeting not found');
-//     }
-//     return this.repo.remove(reviews);
-//   }
+  async remove(id: number) {
+    const review = await this.findOne(id);
+    if (!review) {
+      throw new NotFoundException('Review not found');
+    }
+    return await this.repo.remove(review);
+  }
 }

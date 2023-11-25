@@ -1,4 +1,3 @@
-// order.entity.ts
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -36,7 +35,7 @@ export class Order {
   @Column({ nullable: true, default: '' })
   payment_status: string;
 
-  @Column({ nullable: true, default: '' })
+  @Column({ nullable: true, default: '' }) 
   order_status: string;
 
   @Column({ nullable: true, default: '' })

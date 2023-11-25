@@ -49,7 +49,7 @@ export class FoodService {
     });
   }
   async findAll(): Promise<Food[]> {
-    return this.foodRepository.find();
+    return this.foodRepository.find(); 
   }
 
   async remove(id: number) {

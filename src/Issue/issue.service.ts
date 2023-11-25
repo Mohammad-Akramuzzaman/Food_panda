@@ -21,8 +21,8 @@ export class IssueService {
     }
     return this.repo.findOneBy({ id });
   }
-  find(issue: string) {
-    return this.repo.findBy({ issue });
+  find(id: number) {
+    return this.repo.findBy({ id });
   }
 
   async update(id: number, attrs: Partial<Issue>) {
