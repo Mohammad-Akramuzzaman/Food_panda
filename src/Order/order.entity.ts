@@ -6,6 +6,9 @@ export class Order {
   order_id: number;
 
   @Column({ nullable: true, default: '' })
+  order_number: string;
+
+  @Column({ nullable: true, default: '' })
   order_time: string;
 
   @Column({ nullable: true, default: '' })
